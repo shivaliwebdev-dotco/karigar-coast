@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Karigar Coast — handmade Goan handicrafts, coastal decor, pottery, textiles, spices and jewellery." />
+  <title>Karigar Coast | Handmade with Goan Soul</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#" onclick="showShop(); return false;">
+      <div class="brand-mark">🌴</div>
+      <div>
+        <strong>Karigar Coast</strong>
+        <span>Handmade with Goan Soul ♥</span>
+      </div>
+    </a>
+    <nav>
+      <a class="active" href="#shop">Home</a>
+      <a href="#shop">Shop⌄</a>
+      <a href="#about">About</a>
+      <a href="#orders" onclick="openOrders(); return false;">Orders</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-search">
+      <span>⌕</span><input id="headerSearch" placeholder="Search for handicrafts..." aria-label="Search products">
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" onclick="toggleWishlist()" aria-label="Wishlist">♡</button>
+      <button class="icon-btn cart-btn" onclick="openCart()" aria-label="Cart">🛒<b id="cartBadge">0</b></button>
+      <button class="icon-btn" onclick="openOrders()" aria-label="Orders">◎</button>
+    </div>
+  </header>
+
+  <main id="shop">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">SHOP LOCAL • SUPPORT ARTISANS • TAKE GOA HOME</p>
+        <h1>Discover the Charm<br>of Goan Handicrafts</h1>
+        <p>Handmade pieces inspired by Goa's beaches, colours, markets and coastal stories.</p>
+        <button class="primary-btn" onclick="document.querySelector('.catalog').scrollIntoView({behavior:'smooth'})">Shop Now →</button>
+      </div>
+      <div class="hero-products">
+        <div class="hero-card"><img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=700&q=85" alt="Colourful handmade textiles"></div>
+        <div class="hero-card tall"><img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=700&q=85" alt="Handmade pottery"></div>
+        <div class="hero-card"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=85" alt="Coastal home decor"></div>
+      </div>
+      <div class="hero-flower">✿</div>
+    </section>
+
+    <section class="catalog">
+      <aside class="filters">
+        <h3>🐚 Categories</h3>
+        <button class="category active" data-category="All">All Products <span>24</span></button>
+        <button class="category" data-category="Textiles">🧣 Textiles <span>6</span></button>
+        <button class="category" data-category="Pottery">🏺 Pottery <span>6</span></button>
+        <button class="category" data-category="Spices">🌶️ Spices <span>5</span></button>
+        <button class="category" data-category="Jewellery">💍 Jewellery <span>4</span></button>
+        <button class="category" data-category="Home Decor">🏠 Home Decor <span>4</span></button>
+        <div class="filter-divider"></div>
+        <h3>Price Range</h3>
+        <input id="priceRange" type="range" min="0" max="2000" value="2000">
+        <div class="range-label"><span>₹0</span><span id="priceValue">₹2,000</span></div>
+        <h3>Rating</h3>
+        <div class="stars-filter">★★★★★ <span>4.0 & above</span></div>
+      </aside>
+
+      <section class="products-section">
+        <div class="products-toolbar">
+          <div><strong id="resultCount">24</strong> Products Found</div>
+          <div class="toolbar-controls">
+            <label>Sort by:
+              <select id="sortSelect">
+                <option value="popular">Popular</option>
+                <option value="priceLow">Price: Low to High</option>
+                <option value="priceHigh">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+              </select>
+            </label>
+            <button class="view-btn active">▦</button>
+            <button class="view-btn">☷</button>
+          </div>
+        </div>
+        <div id="productGrid" class="product-grid"></div>
+      </section>
+
+      <aside id="quickView" class="quick-view hidden"></aside>
+    </section>
+  </main>
+
+  <section id="about" class="story-section">
+    <div>
+      <p class="eyebrow">FROM GOA, WITH LOVE</p>
+      <h2>Little pieces of the coast,<br>made by real hands.</h2>
+      <p>Karigar Coast brings together cheerful, handcrafted goods from local makers — from woven bags and painted pottery to spices, jewellery and warm coastal decor.</p>
+    </div>
+    <div class="story-stats">
+      <div><strong>24+</strong><span>artisan products</span></div>
+      <div><strong>5</strong><span>Goan categories</span></div>
+      <div><strong>100%</strong><span>handmade spirit</span></div>
+    </div>
+  </section>
+
+  <section id="orders" class="orders-section hidden">
+    <div class="orders-header">
+      <div><p class="eyebrow">YOUR KARIGAR COAST JOURNEY</p><h2>My Orders</h2></div>
+      <button class="secondary-btn" onclick="showShop()">← Continue Shopping</button>
+    </div>
+    <div class="orders-search"><input id="orderSearch" placeholder="Search by order number..."><span>⌕</span></div>
+    <div id="ordersList"></div>
+  </section>
+
+  <footer id="contact">
+    <div><strong>Karigar Coast</strong><p>Handmade with Goan Soul ♥</p></div>
+    <div><span>Made for local makers • Mapusa, Goa</span></div>
+  </footer>
+
+  <!-- Cart -->
+  <div id="cartOverlay" class="overlay hidden" onclick="closeCart()"></div>
+  <aside id="cartDrawer" class="cart-drawer">
+    <div class="drawer-head"><h2>🛒 Your Cart (<span id="cartCount">0</span>)</h2><button onclick="closeCart()">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="coupon-row"><input id="couponInput" placeholder="Enter Coupon Code"><button onclick="applyCoupon()">Apply</button></div>
+    <div id="couponMessage"></div>
+    <div class="cart-summary">
+      <div><span>Subtotal</span><strong id="subtotal">₹0</strong></div>
+      <div><span>Discount</span><strong id="discount">−₹0</strong></div>
+      <div><span>Delivery</span><strong id="delivery">₹0</strong></div>
+      <div><span>GST (5%)</span><strong id="gst">₹0</strong></div>
+      <div class="total-line"><span>Total</span><strong id="total">₹0</strong></div>
+    </div>
+    <button class="primary-btn full" onclick="startCheckout()">Proceed to Checkout →</button>
+    <button class="text-btn full" onclick="closeCart()">Continue Shopping</button>
+  </aside>
+
+  <!-- Product Modal -->
+  <div id="modalOverlay" class="modal-overlay hidden" onclick="closeProductModal(event)">
+    <div id="productModal" class="product-modal" onclick="event.stopPropagation()"></div>
+  </div>
+
+  <!-- Checkout -->
+  <div id="checkoutOverlay" class="modal-overlay hidden">
+    <div class="checkout-modal">
+      <button class="close-modal" onclick="closeCheckout()">×</button>
+      <div class="checkout-brand">🌴 <strong>Karigar Coast</strong></div>
+      <div class="steps">
+        <div class="step active" data-step="1"><b>1</b><span>Delivery</span></div>
+        <div class="step" data-step="2"><b>2</b><span>Payment</span></div>
+        <div class="step" data-step="3"><b>3</b><span>Review</span></div>
+      </div>
+
+      <div id="checkoutStep1" class="checkout-step">
+        <h2>🚚 Delivery Details</h2><p class="muted">Where should we deliver your order?</p>
+        <div class="form-grid">
+          <label>Full Name *<input id="fullName" placeholder="Your name"></label>
+          <label>Mobile Number *<input id="mobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile"></label>
+          <label>Pincode *<input id="pincode" inputmode="numeric" maxlength="6" placeholder="403507"></label>
+          <label>City *<input id="city" value="Mapusa"></label>
+          <label class="wide">Address *<textarea id="address" placeholder="House no., street, area"></textarea></label>
+        </div>
+        <div id="deliveryError" class="error"></div>
+        <button class="primary-btn full" onclick="goToPayment()">Continue to Payment →</button>
+      </div>
+
+      <div id="checkoutStep2" class="checkout-step hidden">
+        <h2>💳 Payment Method</h2><p class="muted">Choose your preferred payment method</p>
+        <div class="payment-grid">
+          <label class="payment-option"><input type="radio" name="payment" value="UPI"> <span>📱 <b>UPI</b><small>Pay using any UPI app</small></span></label>
+          <label class="payment-option"><input type="radio" name="payment" value="Card"> <span>💳 <b>Card</b><small>Visa • Mastercard • RuPay</small></span></label>
+          <label class="payment-option"><input type="radio" name="payment" value="Net Banking"> <span>🏦 <b>Net Banking</b><small>All major banks</small></span></label>
+          <label class="payment-option"><input type="radio" name="payment" value="Cash on Delivery"> <span>💵 <b>Cash on Delivery</b><small>Pay when delivered</small></span></label>
+        </div>
+        <div id="paymentError" class="error"></div>
+        <div class="two-actions"><button class="secondary-btn" onclick="goToStep(1)">← Back</button><button class="primary-btn" onclick="goToReview()">Continue to Review →</button></div>
+      </div>
+
+      <div id="checkoutStep3" class="checkout-step hidden">
+        <h2>🧾 Review Your Order</h2><p class="muted">Check your items and total before placing the order.</p>
+        <div id="reviewContent"></div>
+        <div class="two-actions"><button class="secondary-btn" onclick="goToStep(2)">← Back</button><button class="primary-btn" onclick="placeOrder()">Place Order 🎉</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmation -->
+  <div id="successOverlay" class="modal-overlay hidden">
+    <div class="success-modal">
+      <div class="success-icon">✓</div>
+      <div class="confetti">• · ✦ · • ✧ · •</div>
+      <p class="eyebrow">THANK YOU FOR SHOPPING LOCAL</p>
+      <h1>Order Placed Successfully!</h1>
+      <p>Your Karigar Coast order is confirmed.</p>
+      <div class="order-number">Your Order Number is<br><strong id="successOrderNo"></strong></div>
+      <button class="whatsapp-btn" onclick="shareWhatsApp()">◉ Share on WhatsApp</button>
+      <button class="secondary-btn full" onclick="openLatestOrder()">View Order Details</button>
+      <button class="text-btn full" onclick="closeSuccess(); showShop()">Continue Shopping →</button>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
